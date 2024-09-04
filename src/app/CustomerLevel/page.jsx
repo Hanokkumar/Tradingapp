@@ -1,5 +1,7 @@
 import React from 'react'
+
 import './customerlevel.css'
+
 function CustomerLevel() {
   return (
     <div style={{width:"100%"}} >
