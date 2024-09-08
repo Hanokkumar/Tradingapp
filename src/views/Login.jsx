@@ -17,9 +17,9 @@ import InputAdornment from '@mui/material/InputAdornment'
 import Checkbox from '@mui/material/Checkbox'
 import Button from '@mui/material/Button'
 import FormControlLabel from '@mui/material/FormControlLabel'
-import logoimage from "../../public/images/logos/logo.jpg"
+// import logoimage from "../assets/applogo.png"
 
-import Logo from '@components/layout/shared/Logo'
+// import Logo from '@components/layout/shared/applogo.png'
 import Illustrations from '@components/Illustrations'
 
 
@@ -35,7 +35,7 @@ const Login = ({ mode }) => {
   const [errors, setErrors] = useState({})
 
   // Vars
-  const darkImg = '/images/pages/auth-v1-mask-dark.png'
+  const darkImg = '/images/pages/auth-v1-mask-dark'
   const lightImg = '/images/pages/auth-v1-mask-light.png'
 
   // Hooks
@@ -86,8 +86,9 @@ const Login = ({ mode }) => {
       <Card className='flex flex-col sm:is-[450px]'>
         <CardContent className='p-6 sm:!p-12'>
           <Link href={{pathname: '/' }} className='flex justify-center items-center mbe-6'>
-            {/* <Logo /> */}
-            App logo
+          <div className="hero-img">
+          <img src='/images/logos/AppLogo.png' style={{height:'80px',width:'80px'}} alt="" />        </div>
+            {/* App logo */}
             
 
           </Link>

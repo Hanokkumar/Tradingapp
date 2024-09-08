@@ -13,7 +13,7 @@ const StyledVerticalMenuSection = styled.li`
 
   & .${menuClasses.menuSectionContent} {
     font-size: 14px;
-    color: #aaaaaa;
+    color: #FFA500;
   }
 
   ${({ menuSectionStyles }) => menuSectionStyles};
