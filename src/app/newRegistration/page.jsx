@@ -172,7 +172,7 @@ export default function RegistrationModal() {
             country: registrations[index].Country,
             pinCode: registrations[index].PinCode,
             usertype:registrations[index].UserType,
-            Parentid: 0,
+            Parentid: 1,
         });
         
         setEditMode(true);
