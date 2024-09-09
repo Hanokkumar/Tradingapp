@@ -67,7 +67,7 @@ const UserDropdown = () => {
       >
         <Avatar
           ref={anchorRef}
-          alt='John Doe'
+          alt={'John'}
           src='/images/avatars/1.png'
           onClick={handleDropdownOpen}
           className='cursor-pointer bs-[38px] is-[38px]'
@@ -95,13 +95,13 @@ const UserDropdown = () => {
                     <Avatar alt='John Doe' src='/images/avatars/1.png' />
                     <div className='flex items-start flex-col'>
                       <Typography className='font-medium' color='text.primary'>
-                        John Doe
+                       {JSON.parse(localStorage.getItem("Userinfo")).FirstName} {JSON.parse(localStorage.getItem("Userinfo")).LastName}
                       </Typography>
-                      <Typography variant='caption'>Admin</Typography>
+                      <Typography variant='caption'>{JSON.parse(localStorage.getItem("Userinfo")).UserType}</Typography>
                     </div>
                   </div>
                   <Divider className='mlb-1' />
-                  <MenuItem className='gap-3' onClick={e => handleDropdownClose(e)}>
+                   <MenuItem className='gap-3' onClick={e => handleDropdownClose(e)}>
                     <i className='ri-user-3-line' />
                     <Typography color='text.primary'>My Profile</Typography>
                   </MenuItem>

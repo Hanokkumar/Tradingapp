@@ -78,7 +78,7 @@ export async function POST(request) {
         );
         console.log(result,"result")
         const registrationId = result.insertId;
-        const registrationNumbers = `VPIN${registrationId}`;
+        const registrationNumbers = `VPI${registrationId}`;
         const Groupdid =1000 + registrationId
 
         await connection.execute(

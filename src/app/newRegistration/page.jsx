@@ -25,8 +25,8 @@ export default function RegistrationModal() {
     const [editMode, setEditMode] = useState(false);
     const [editIndex, setEditIndex] = useState(null);
     const [Usertype, setUsertype] = useState([
-        {lable:"Admin", value:"Admin"},
-        {lable:"User", value:"User"}
+        {label:"Admin", value:"Admin"},
+        {label:"User", value:"User"}
     ])
     const [collectionofuserhelp, setcollectionofuserhelp] = useState([])
     const [registrations, setRegistrations] = useState([]);
@@ -208,7 +208,7 @@ export default function RegistrationModal() {
             console.log(data.result);
             setRegistrations(data.result);
             const collectionvalue  = data.result.filter((dat) => dat.UserType !== 'Admin').map((Data) => ({
-                lable:Data.FirstName,
+                label:Data.FirstName,
                 value:Data.RegistrationId
 
             }))
@@ -462,7 +462,7 @@ export default function RegistrationModal() {
         name="Parentid"
       >
          {collectionofuserhelp.map((u, index) => (
- <MenuItem value={u.value} key={index}>{u.lable}</MenuItem>
+ <MenuItem value={u.value} key={index}>{u.label}</MenuItem>
 
          ))}
        

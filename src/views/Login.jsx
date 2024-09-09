@@ -17,9 +17,6 @@ import InputAdornment from '@mui/material/InputAdornment'
 import Checkbox from '@mui/material/Checkbox'
 import Button from '@mui/material/Button'
 import FormControlLabel from '@mui/material/FormControlLabel'
-// import logoimage from "../assets/applogo.png"
-
-// import Logo from '@components/layout/shared/applogo.png'
 import Illustrations from '@components/Illustrations'
 
 
