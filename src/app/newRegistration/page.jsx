@@ -172,7 +172,7 @@ export default function RegistrationModal() {
             country: registrations[index].Country,
             pinCode: registrations[index].PinCode,
             usertype:registrations[index].UserType,
-            Parentid: 1,
+            Parentid: 0,
         });
         
         setEditMode(true);
@@ -197,41 +197,25 @@ export default function RegistrationModal() {
             alert("Delete failed. Please try again.");
         }
     };
+
     const GetUserRegister = async () => {
-        try {
-            const response = await fetch("/api/Registration", {
-                method: "GET",
-                headers: {
-                    "Content-Type": "application/json",
-                },
-            });
-    
-            // Check if the response is ok
-            if (!response.ok) {
-                throw new Error(`HTTP error! status: ${response.status}`);
-            }
-    
-            const data = await response.json();
+        const response = await fetch("/api/Registration", {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json",
+            },
+        }).then((res) => res.json()).then((data) => {
             console.log(data.result);
-    
-            // Set the registrations state
             setRegistrations(data.result);
-    
-            // Filter out admins and map data for the select dropdown
-            const collectionValue = data.result
-                .filter((dat) => dat.UserType !== 'Admin')
-                .map((Data) => ({
-                    label: Data.FirstName,  // Use label and value correctly
-                    value: Data.RegistrationId,
-                }));
-    
-            // Set the state with filtered user help data
-            setcollectionofuserhelp(collectionValue);
-        } catch (error) {
-            console.error("Error fetching user registrations:", error);
-        }
+            const collectionvalue  = data.result.filter((dat) => dat.UserType !== 'Admin').map((Data) => ({
+                label:Data.FirstName,
+                value:Data.RegistrationId
+
+            }))
+            setcollectionofuserhelp(collectionvalue)
+
+        });
     };
-    
 
     useEffect(() => {
         GetUserRegister();
@@ -467,30 +451,24 @@ export default function RegistrationModal() {
     </FormControl>
                             </Grid>
                              <Grid item xs={12} sm={6}>
-                             <FormControl sx={{ m: 1, minWidth: 120 }} size="small">
-  <InputLabel id="demo-select-small-label">Parent id</InputLabel>
-  <Select
-    labelId="demo-select-small-label"
-    id="demo-select-small"
-    value={formData.Parentid}
-    label="Parent id"
-    onChange={handleChange}
-    name="Parentid"
-  >
-    {collectionofuserhelp.length > 0 ? (
-      collectionofuserhelp.map((u, index) => (
-        <MenuItem value={u.value} key={index}>
-          {u.label}
-        </MenuItem>
-      ))
-    ) : (
-      <MenuItem value="" disabled>
-        No options available
-      </MenuItem>
-    )}
-  </Select>
-</FormControl>
+                            <FormControl sx={{ m: 1, minWidth: 120 }} size="small">
+      <InputLabel id="demo-select-small-label">Parent id</InputLabel>
+      <Select
+        labelId="demo-select-small-label"
+        id="demo-select-small"
+        value={formData.Parentid}
+        label="Parentid"
+        onChange={handleChange}
+        name="Parentid"
+      >
+         {collectionofuserhelp.map((u, index) => (
+ <MenuItem value={u.value} key={index}>{u.label}</MenuItem>
 
+         ))}
+       
+      
+      </Select>
+    </FormControl>
                             </Grid>
                         </Grid>
                     </Box>
