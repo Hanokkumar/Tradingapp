@@ -22,13 +22,8 @@ function Page() {
         </div>
         <nav>
             <a href="#">Home</a>
-            <a href="#">About</a>
-          
-            <a href="#">Team</a>
-            <a href="#">Pricing</a>
-         
-            <a href="#">Contact</a>
-        </nav>
+           
+        </nav> 
        
      
     </header>

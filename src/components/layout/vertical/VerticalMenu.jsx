@@ -118,6 +118,8 @@ const userinfos = JSON.parse(localStorage.getItem("Userinfo"))
         <> 
         <MenuItem href='/newRegistration'>New Registration</MenuItem>
         <MenuItem href='/CustomerLevel'>Customer Level</MenuItem>
+        <MenuItem href='/Coindetails'>Coins Detail</MenuItem>
+
         {/* <MenuItem href='/Coindetails'>Coins Detail</MenuItem>
         <MenuItem href='/Home'>Withdraw Status</MenuItem>
         <MenuItem href='/UnderMaintenance'>Grade Achievers</MenuItem> */}

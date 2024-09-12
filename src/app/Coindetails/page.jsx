@@ -1,6 +1,35 @@
-import React from 'react'
+"use client"
+
+import React, { useEffect, useState }from 'react'
 
 function page() {
+const [conincollecton, setconincollecton] = useState([])
+// const [bonuscoincollection, setbonuscoincollection] = useState([])
+  const [Userinfo, setUserinfo] = useState({})
+  useEffect(() => {
+    Getcoindetails()
+  
+    const data  = localStorage.getItem('Userinfo')
+      setUserinfo(JSON.parse(data))
+  }, [])
+  
+  const Getcoindetails = async() => {
+    const response = await fetch("/api/CoinDetails", {
+      method: "POST",
+      headers: {
+          "Content-Type": "application/json",
+      },
+      body: JSON.stringify({userid:JSON.parse(localStorage.getItem('Userinfo')).RegistrationId}),
+  }).then((res) => res.json()).then((data) => {
+    console.log(data.result)
+    setconincollecton(data.result)
+// const value = data.result.filter(item => item.cointype === 'Bonus');
+// setbonuscoincollection(value)
+// const value1 = data.result.filter(item => item.cointype === 'Bonus');
+// setconincollecton(value1)
+})
+  
+  }
   return (
     <div>
 
@@ -29,14 +58,17 @@ function page() {
       <div class="results-summary-container__result">
         <div class="heading-tertiary">Your Coin Result</div>
         <div class="result-box">
-          <div class="heading-primary">88</div>
-          <p class="result">of 100</p>
+          <div class="heading-primary"> {conincollecton.reduce((acc, item) =>  Number(acc) + Number(item.coinsvalue)  // Assuming 'value' is the key you want to sum
+  
+
+, 0)}</div>
+          <p class="result">of 176</p> 
         </div>
         <div class="result-text-box">
           <div class="heading-secondary">Great</div>
-          <p class="paragraph">
+          {/* <p class="paragraph">
             You scored higher than 65% of the people who have taken these tests.
-          </p>
+          </p> */}
         </div>
       </div>
       <div class="results-summary-container__options">
@@ -49,7 +81,11 @@ function page() {
               </svg>
               <span class="reaction-icon-text">Coin Bonus</span>
             </div>
-            <div class="result-box"><span>50</span> / 50</div>
+            {conincollecton.filter((d) => d.cointype ==="Bonus").map((data)=> (
+
+           
+            <div class="result-box"><span>{data.coinsvalue}</span> / 50</div>
+          ))}
           </div>
           <div class="result-option result-option-memory">
             <div class="icon-box">
@@ -60,7 +96,13 @@ function page() {
               </svg>
               <span class="memory-icon-text">Level Coins</span>
             </div>
-            <div class="result-box"><span>94</span> / 126</div>
+            
+
+            <div class="result-box"><span> {conincollecton.filter((d) => d.cointype ==="Reference").reduce((acc, item) =>  Number(acc) + Number(item.coinsvalue)  // Assuming 'value' is the key you want to sum
+  
+
+  , 0)}</span> / 126</div>
+            
           </div>
           <div class="result-option result-option-verbal">
             <div class="icon-box">
@@ -69,7 +111,10 @@ function page() {
               </svg>
               <span class="verbal-icon-text">Total Coins</span>
             </div>
-            <div class="result-box"><span>66</span> / 100</div>
+            <div class="result-box"><span>{conincollecton.reduce((acc, item) =>  Number(acc) + Number(item.coinsvalue)  // Assuming 'value' is the key you want to sum
+  
+
+  , 0)}</span> / 176</div>
           </div>
           <div class="result-option result-option-Visual">
             <div class="icon-box">
@@ -79,7 +124,7 @@ function page() {
               </svg>
               <span class="visual-icon-text">Withdraw Coins</span>
             </div>
-            <div class="result-box"><span>72</span> / 100</div>
+            <div class="result-box"><span>0</span> / 176</div>
           </div>
           <div class="summary__cta">
             <button class="btn btn__continue">Continue</button>
