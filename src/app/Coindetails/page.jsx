@@ -1,4 +1,3 @@
-"use client"
 
 import React, { useEffect, useState }from 'react'
 
@@ -77,10 +76,10 @@ const [Conincollecton, setConincollecton] = useState([])
               </svg>
               <span class="reaction-icon-text">Coin Bonus</span>
             </div>
-            {Conincollecton.filter((d) => d.cointype ==="Bonus").map((data)=> (
+            {Conincollecton.filter((d) => d.cointype ==="Bonus").map((data,index)=> (
 
            
-            <div class="result-box"><span>{data.coinsvalue}</span> / 50</div>
+            <div class="result-box" key={index}><span>{data.coinsvalue}</span> / 50</div>
           ))}
           </div>
           <div class="result-option result-option-memory">
