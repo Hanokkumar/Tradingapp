@@ -2,7 +2,7 @@
 
 import React, { useEffect, useState }from 'react'
 
-function page() {
+function Page() {
 const [Conincollecton, setConincollecton] = useState([])
   const [Userinfo, setUserinfo] = useState({})
   useEffect(() => {
@@ -134,4 +134,4 @@ const [Conincollecton, setConincollecton] = useState([])
   )
 }
 
-export default page
+export default Page
