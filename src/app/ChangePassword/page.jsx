@@ -155,7 +155,7 @@ function Page() {
       <Box sx={{ position: 'fixed', top: 0, right: 0, p: 2, zIndex: 9999 }}>
       <Stack sx={{ width: '100%' }} spacing={2}>
         <Alert variant="filled" severity="warning">
-      Password and Confirm Password doesn't Match
+      Password and Confirm Password does not Match
         </Alert>
       </Stack>
     </Box>}
