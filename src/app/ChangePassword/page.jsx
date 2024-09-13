@@ -27,7 +27,7 @@ import { useImageVariant } from '@core/hooks/useImageVariant'
 import { Stack, Alert, Box } from '@mui/material';
 
 
-function page() {
+function Page() {
     const [userinfo, setUserinfo] = useState({})
     const [password, setPassword] = useState("")
     const [passworderror, setPassworderror] = useState(false)
@@ -60,14 +60,13 @@ function page() {
     })
       
       }else {
-        if (Password.length ===0) {
+        if (password.length ===0) {
           setPassworderror(true)
         }
         setTimeout(() => {
           setPassworderror(false)
         }, 3000);
       }
-
       }
   return (
     <div className='flex flex-col justify-center items-center min-bs-[100dvh] relative p-6'>
@@ -122,4 +121,4 @@ function page() {
   </div>  )
 }
 
-export default page
+export default Page
