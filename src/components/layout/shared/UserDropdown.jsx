@@ -112,7 +112,7 @@ const UserDropdown = () => {
                 
                     <Typography color='text.primary'  >
                       
-                    <Link  href={{pathname:'/ChangePassword'}}  >Change Password</Link>
+                    <Link  href={{pathname:'/ChangePassword'}}  style={{color:"black"}} >Change Password</Link>
 
                       </Typography>
                   </MenuItem>
