@@ -28,10 +28,10 @@ import { Stack, Alert, Box } from '@mui/material';
 
 
 function page() {
-    const [Userinfo, setUserinfo] = useState({})
-    const [Password, setPassword] = useState("")
-    const [Passworderror, setPassworderror] = useState(false)
-    const [Passwordsuccess, setPasswordsuccess] = useState(false)
+    const [userinfo, setUserinfo] = useState({})
+    const [password, setPassword] = useState("")
+    const [passworderror, setPassworderror] = useState(false)
+    const [passwordsuccess, setPasswordsuccess] = useState(false)
     const router = useRouter()
 
   useEffect(() => {
@@ -40,7 +40,7 @@ function page() {
       setUserinfo(JSON.parse(data))
   }, [])
     const changepassword = async() => {
-      if (Password !== "") {
+      if (password !== "") {
         
       
         const response = await fetch("/api/Changepassword", {
@@ -48,7 +48,7 @@ function page() {
           headers: {
               "Content-Type": "application/json",
           },
-          body: JSON.stringify({Password:Password,RegistrationId:JSON.parse(localStorage.getItem('Userinfo')).RegistrationId}
+          body: JSON.stringify({Password:password,RegistrationId:JSON.parse(localStorage.getItem('Userinfo')).RegistrationId}
         ),
       }).then((res) => res.json()).then((data) => {
         setPasswordsuccess(true)
@@ -90,11 +90,11 @@ function page() {
               autoFocus
               fullWidth
               label='New Password'
-            value={Password}
+            value={password}
             onChange={(e)=>setPassword(e.target.value)}
             
             />
-            {Passworderror &&         
+            {passworderror &&         
              <p style={{color:"red"}}>Please Enter your New Password</p>
             }
 
@@ -111,7 +111,7 @@ function page() {
       </CardContent>
     </Card>
     {/* <Illustrations maskImg={{ src: authBackground }} /> */}
-    {Passwordsuccess &&
+    {passwordsuccess &&
       <Box sx={{ position: 'fixed', top: 0, right: 0, p: 2, zIndex: 9999 }}>
       <Stack sx={{ width: '100%' }} spacing={2}>
         <Alert variant="filled" severity="success">
