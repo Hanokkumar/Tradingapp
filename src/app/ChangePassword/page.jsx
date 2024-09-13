@@ -30,8 +30,11 @@ import { Stack, Alert, Box } from '@mui/material';
 function Page() {
     const [userinfo, setUserinfo] = useState({})
     const [password, setPassword] = useState("")
+    const [confirmpassword, setConfirmpassword] = useState("")
     const [passworderror, setPassworderror] = useState(false)
     const [passwordsuccess, setPasswordsuccess] = useState(false)
+    const [matchpassword, setMatchpassword] = useState(false)
+    const [confirmpassworderror, setconfirmpassworderror] = useState(false)
     const router = useRouter()
 
   useEffect(() => {
@@ -40,8 +43,10 @@ function Page() {
       setUserinfo(JSON.parse(data))
   }, [])
     const changepassword = async() => {
-      if (password !== "") {
+      if (password !== "" && confirmpassword !=="") {
         
+      if(password == confirmpassword) {
+
       
         const response = await fetch("/api/Changepassword", {
           method: "PUT",
@@ -58,16 +63,31 @@ function Page() {
         router.push('/Login')
 
     })
+  }else {
+    setMatchpassword(true)
+    setTimeout(() => {
+      setMatchpassword(false)
+    },3000);
+        }
+    
       
       }else {
         if (password.length ===0) {
           setPassworderror(true)
         }
+        if (confirmpassword.length === 0) {
+        setconfirmpassworderror(true)  
+        }
         setTimeout(() => {
           setPassworderror(false)
+          setconfirmpassworderror(false)
         }, 3000);
       }
+  
+  
       }
+
+
   return (
     <div className='flex flex-col justify-center items-center min-bs-[100dvh] relative p-6'>
     <Card className='flex flex-col sm:is-[450px]'>
@@ -97,6 +117,19 @@ function Page() {
              <p style={{color:"red"}}>Please Enter your New Password</p>
             }
 
+<TextField
+              autoFocus
+              fullWidth
+              label='Confirm Password'
+            value={confirmpassword}
+            onChange={(e)=>setConfirmpassword(e.target.value)}
+            
+            />
+            {confirmpassworderror &&         
+             <p style={{color:"red"}}>Please Enter your Confirm Password</p>
+            }
+
+
             <div className='flex justify-between items-center gap-x-3 gap-y-1 flex-wrap'>
               {/* <FormControlLabel control={<Checkbox />} label='Remember me' />
               <Typography className='text-end' color='primary' component={Link} href='/forgot-password'>
@@ -118,6 +151,19 @@ function Page() {
         </Alert>
       </Stack>
     </Box>}
+    {matchpassword &&
+      <Box sx={{ position: 'fixed', top: 0, right: 0, p: 2, zIndex: 9999 }}>
+      <Stack sx={{ width: '100%' }} spacing={2}>
+        <Alert variant="filled" severity="warning">
+      Password and Confirm Password doesn't Match
+        </Alert>
+      </Stack>
+    </Box>}
+
+
+
+
+
   </div>  )
 }
 
