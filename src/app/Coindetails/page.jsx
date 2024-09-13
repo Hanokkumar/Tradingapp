@@ -3,7 +3,7 @@
 import React, { useEffect, useState }from 'react'
 
 function page() {
-const [conincollecton, setConincollecton] = useState([])
+const [Conincollecton, setConincollecton] = useState([])
   const [Userinfo, setUserinfo] = useState({})
   useEffect(() => {
     Getcoindetails()
@@ -54,7 +54,7 @@ const [conincollecton, setConincollecton] = useState([])
       <div class="results-summary-container__result">
         <div class="heading-tertiary">Your Coin Result</div>
         <div class="result-box">
-          <div class="heading-primary"> {conincollecton.reduce((acc, item) =>  Number(acc) + Number(item.coinsvalue)  // Assuming 'value' is the key you want to sum
+          <div class="heading-primary"> {Conincollecton.reduce((acc, item) =>  Number(acc) + Number(item.coinsvalue)  // Assuming 'value' is the key you want to sum
   
 
 , 0)}</div>
@@ -77,7 +77,7 @@ const [conincollecton, setConincollecton] = useState([])
               </svg>
               <span class="reaction-icon-text">Coin Bonus</span>
             </div>
-            {conincollecton.filter((d) => d.cointype ==="Bonus").map((data)=> (
+            {Conincollecton.filter((d) => d.cointype ==="Bonus").map((data)=> (
 
            
             <div class="result-box"><span>{data.coinsvalue}</span> / 50</div>
@@ -94,7 +94,7 @@ const [conincollecton, setConincollecton] = useState([])
             </div>
             
 
-            <div class="result-box"><span> {conincollecton.filter((d) => d.cointype ==="Reference").reduce((acc, item) =>  Number(acc) + Number(item.coinsvalue)  // Assuming 'value' is the key you want to sum
+            <div class="result-box"><span> {Conincollecton.filter((d) => d.cointype ==="Reference").reduce((acc, item) =>  Number(acc) + Number(item.coinsvalue)  // Assuming 'value' is the key you want to sum
   
 
   , 0)}</span> / 126</div>
@@ -107,7 +107,7 @@ const [conincollecton, setConincollecton] = useState([])
               </svg>
               <span class="verbal-icon-text">Total Coins</span>
             </div>
-            <div class="result-box"><span>{conincollecton.reduce((acc, item) =>  Number(acc) + Number(item.coinsvalue)  // Assuming 'value' is the key you want to sum
+            <div class="result-box"><span>{Conincollecton.reduce((acc, item) =>  Number(acc) + Number(item.coinsvalue)  // Assuming 'value' is the key you want to sum
   
 
   , 0)}</span> / 176</div>

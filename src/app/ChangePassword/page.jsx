@@ -29,9 +29,9 @@ import { Stack, Alert, Box } from '@mui/material';
 
 function page() {
     const [Userinfo, setUserinfo] = useState({})
-    const [password, setPassword] = useState("")
-    const [passworderror, setPassworderror] = useState(false)
-    const [passwordsuccess, setPasswordsuccess] = useState(false)
+    const [Password, setPassword] = useState("")
+    const [Passworderror, setPassworderror] = useState(false)
+    const [Passwordsuccess, setPasswordsuccess] = useState(false)
     const router = useRouter()
 
   useEffect(() => {
@@ -40,7 +40,7 @@ function page() {
       setUserinfo(JSON.parse(data))
   }, [])
     const changepassword = async() => {
-      if (password !== "") {
+      if (Password !== "") {
         
       
         const response = await fetch("/api/Changepassword", {
@@ -48,7 +48,7 @@ function page() {
           headers: {
               "Content-Type": "application/json",
           },
-          body: JSON.stringify({Password:password,RegistrationId:JSON.parse(localStorage.getItem('Userinfo')).RegistrationId}
+          body: JSON.stringify({Password:Password,RegistrationId:JSON.parse(localStorage.getItem('Userinfo')).RegistrationId}
         ),
       }).then((res) => res.json()).then((data) => {
         setPasswordsuccess(true)
@@ -60,7 +60,7 @@ function page() {
     })
       
       }else {
-        if (password.length ===0) {
+        if (Password.length ===0) {
           setPassworderror(true)
         }
         setTimeout(() => {
@@ -90,11 +90,11 @@ function page() {
               autoFocus
               fullWidth
               label='New Password'
-            value={password}
+            value={Password}
             onChange={(e)=>setPassword(e.target.value)}
             
             />
-            {passworderror &&         
+            {Passworderror &&         
              <p style={{color:"red"}}>Please Enter your New Password</p>
             }
 
@@ -111,7 +111,7 @@ function page() {
       </CardContent>
     </Card>
     {/* <Illustrations maskImg={{ src: authBackground }} /> */}
-    {passwordsuccess &&
+    {Passwordsuccess &&
       <Box sx={{ position: 'fixed', top: 0, right: 0, p: 2, zIndex: 9999 }}>
       <Stack sx={{ width: '100%' }} spacing={2}>
         <Alert variant="filled" severity="success">
