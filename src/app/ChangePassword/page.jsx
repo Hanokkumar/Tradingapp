@@ -29,9 +29,9 @@ import { Stack, Alert, Box } from '@mui/material';
 
 function page() {
     const [Userinfo, setUserinfo] = useState({})
-    const [password, setpassword] = useState("")
-    const [passworderror, setpassworderror] = useState(false)
-    const [passwordsuccess, setpasswordsuccess] = useState(false)
+    const [password, setPassword] = useState("")
+    const [passworderror, setPassworderror] = useState(false)
+    const [passwordsuccess, setPasswordsuccess] = useState(false)
     const router = useRouter()
 
   useEffect(() => {
@@ -51,9 +51,9 @@ function page() {
           body: JSON.stringify({Password:password,RegistrationId:JSON.parse(localStorage.getItem('Userinfo')).RegistrationId}
         ),
       }).then((res) => res.json()).then((data) => {
-        setpasswordsuccess(true)
+        setPasswordsuccess(true)
         setTimeout(() => {
-          setpasswordsuccess(false)
+          setPasswordsuccess(false)
         }, 3000);
         router.push('/Login')
 
@@ -61,10 +61,10 @@ function page() {
       
       }else {
         if (password.length ===0) {
-          setpassworderror(true)
+          setPassworderror(true)
         }
         setTimeout(() => {
-          setpassworderror(false)
+          setPassworderror(false)
         }, 3000);
       }
 
@@ -91,7 +91,7 @@ function page() {
               fullWidth
               label='New Password'
             value={password}
-            onChange={(e)=>setpassword(e.target.value)}
+            onChange={(e)=>setPassword(e.target.value)}
             
             />
             {passworderror &&         

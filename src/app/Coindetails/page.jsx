@@ -3,8 +3,7 @@
 import React, { useEffect, useState }from 'react'
 
 function page() {
-const [conincollecton, setconincollecton] = useState([])
-// const [bonuscoincollection, setbonuscoincollection] = useState([])
+const [conincollecton, setConincollecton] = useState([])
   const [Userinfo, setUserinfo] = useState({})
   useEffect(() => {
     Getcoindetails()
@@ -22,11 +21,8 @@ const [conincollecton, setconincollecton] = useState([])
       body: JSON.stringify({userid:JSON.parse(localStorage.getItem('Userinfo')).RegistrationId}),
   }).then((res) => res.json()).then((data) => {
     console.log(data.result)
-    setconincollecton(data.result)
-// const value = data.result.filter(item => item.cointype === 'Bonus');
-// setbonuscoincollection(value)
-// const value1 = data.result.filter(item => item.cointype === 'Bonus');
-// setconincollecton(value1)
+    setConincollecton(data.result)
+
 })
   
   }
