@@ -12,10 +12,10 @@ function CustomerLevel() {
     Getlevel()
       const data  = localStorage.getItem('Userinfo')
       setUserinfo(JSON.parse(data))
-      //console.log(JSON.parse(data).RegistrationId)
+      console.log(JSON.parse(data).RegistrationId)
   }, [])
 const Getlevel = async() => {
-  //console.log(Userinfo,"Userinf")
+  console.log(Userinfo,"Userinf")
   const response = await fetch("/api/GetTreeinfo", {
     method: "POST",
     headers: {
