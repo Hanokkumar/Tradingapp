@@ -35,6 +35,7 @@ function Page() {
     const [passwordsuccess, setPasswordsuccess] = useState(false)
     const [matchpassword, setMatchpassword] = useState(false)
     const [confirmpassworderror, setconfirmpassworderror] = useState(false)
+    const [passwordlengtherror, setpasswordlengtherror] = useState(false)
     const router = useRouter()
 
   useEffect(() => {
@@ -43,7 +44,7 @@ function Page() {
       setUserinfo(JSON.parse(data))
   }, [])
     const changepassword = async() => {
-      if (password !== "" && confirmpassword !=="") {
+      if (password !== "" && confirmpassword !=="" && password.length == 5) {
         
       if(password == confirmpassword) {
 
@@ -78,8 +79,12 @@ function Page() {
         if (confirmpassword.length === 0) {
         setconfirmpassworderror(true)  
         }
+        if(password.length !==5){
+          setpasswordlengtherror(true)
+        }
         setTimeout(() => {
           setPassworderror(false)
+          setpasswordlengtherror(false)
           setconfirmpassworderror(false)
         }, 3000);
       }
@@ -116,6 +121,10 @@ function Page() {
             {passworderror &&         
              <p style={{color:"red"}}>Please Enter your New Password</p>
             }
+            {passwordlengtherror &&         
+             <p style={{color:"red"}}>New Password Must be 5 Characters</p>
+            }
+
 
 <TextField
               autoFocus
