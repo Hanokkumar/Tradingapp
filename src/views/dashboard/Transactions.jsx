@@ -100,7 +100,7 @@ const Transactions = () => {
                   <Typography>Level</Typography>
                  {Conincollecton.filter((d) => d.cointype === "Reference").map((data, index) => (
   <Typography key={index} variant='h5'>
-    {data.coinsvalue !== 0 ? (data.coinsvalue ? data.coinsvalue : 0) : 0}0
+    {data.coinsvalue !== 0 ? (data.coinsvalue ? data.coinsvalue : 0) : 0}
   </Typography>
 ))}
                 </div>
