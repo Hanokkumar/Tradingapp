@@ -43,54 +43,7 @@ function Page() {
     const data  = localStorage.getItem('Userinfo')
       setUserinfo(JSON.parse(data))
   }, [])
-  //   const changepassword = async() => {
-  //     if (password !== "" && confirmpassword !=="" && password.length >5) {
-        
-  //     if(password == confirmpassword) {
-
-      
-  //       const response = await fetch("/api/Changepassword", {
-  //         method: "PUT",
-  //         headers: {
-  //             "Content-Type": "application/json",
-  //         },
-  //         body: JSON.stringify({Password:password,RegistrationId:JSON.parse(localStorage.getItem('Userinfo')).RegistrationId}
-  //       ),
-  //     }).then((res) => res.json()).then((data) => {
-  //       setPasswordsuccess(true)
-  //       setTimeout(() => {
-  //         setPasswordsuccess(false)
-  //       }, 3000);
-  //       router.push('/Login')
-
-  //   })
-  // }else {
-  //   setMatchpassword(true)
-  //   setTimeout(() => {
-  //     setMatchpassword(false)
-  //   },3000);
-  //       }
-    
-      
-  //     }else {
-  //       if (password.length ===0) {
-  //         setPassworderror(true)
-  //       }
-  //       if (confirmpassword.length === 0) {
-  //       setconfirmpassworderror(true)  
-  //       }
-  //       if(password.length >5){
-  //         setpasswordlengtherror(true)
-  //       }
-  //       setTimeout(() => {
-  //         setPassworderror(false)
-  //         setpasswordlengtherror(false)
-  //         setconfirmpassworderror(false)
-  //       }, 3000);
-  //     }
-  
-  
-  //     }
+ 
 
   const changepassword = async () => {
     if (password !== "" && confirmpassword !== "") {
